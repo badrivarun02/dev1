@@ -9,8 +9,18 @@ pipeline {
         }
         stage('Hello') {
             steps {
-                echo 'Hello World2'
+                echo 'Hello World3'
             }
         }
+    }
+    post{
+        always{
+            emailext (
+                    subject: "Jenkins Build ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+                    body: """<p>See the attached build log for details.</p>""",
+                    to: 'badrivarun09@gmail.com',
+                    attachLog: true
+                )
+}
     }
 }
