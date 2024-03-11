@@ -9,7 +9,7 @@ pipeline {
         }
         stage('Hello') {
             steps {
-                echo 'Hello World4'
+                echo 'Hello World from feature branch'
             }
         }
     }
