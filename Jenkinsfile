@@ -10,6 +10,7 @@ pipeline {
         stage('Hello') {
             steps {
                 echo 'Hello World from feature branch'
+		echo 'hellow world from git flow workflow'
             }
         }
     }
