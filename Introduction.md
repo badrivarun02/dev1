@@ -1,8 +1,8 @@
-# Implementing a Fundamental CI/CD Pipeline on a Local Windows 10 System
+ #  **Implementing a Fundamental CI/CD Pipeline on a Local Windows 10 System** 
 
-This project demonstrates how to set up a fundamental Continuous Integration/Continuous Deployment (CI/CD) pipeline on a local Windows 10 system. The pipeline is designed for a Java application and utilizes several tools and technologies including Jenkins, Maven, Docker, Kubernetes, and Cloudflare.
+This project demonstrates how to set up a fundamental Continuous Integration/Continuous Deployment (CI/CD) pipeline on a local Windows 10 system. The pipeline is designed for a Java application and utilizes several tools and technologies including **Jenkins**, **Maven**, **Docker**, **Kubernetes**, and **Cloudflare**.
 
-## Prerequisites
+## **Prerequisites**
 
 The following tools and technologies are required for this project:
 
@@ -15,22 +15,24 @@ The following tools and technologies are required for this project:
 7. **Notification Tool**: Gmail SMTP server for sending email notifications.
 8. **OS**: Windows 10.
 9. **Package Manager**: Chocolatey, used to install Trivy, a simple and comprehensive vulnerability scanner for containers.
+10. **Code Editor**: Visual Studio Code, A powerful and customizable code editor by Microsoft, ideal for this project.
+11. **AI assistance**: With the help of Copilot, I have written some code, resolved errors, and prepared a document.
 
-## Setup and Execution
+## **Setup and Execution**
 
-### Email Notification Setup
+### **Email Notification Setup**
 
-An additional stage for email notification is included in the pipeline. This means that whenever the pipeline is executed, it sends an email notification regardless of whether the pipeline passes or fails. To set this up, create a token/app password for integration with Jenkins and add the app password/token and username in the system under Managed Jenkins.
+An additional stage for email notification is included in the pipeline. This means that whenever the pipeline is executed, it sends an email notification regardless of whether the pipeline passes or fails. 
 
-### GitHub Integration
+### **GitHub Integration**
 
-Next, integrate GitHub with Jenkins via a webhook. Create a repo in GitHub and add a Jenkinsfile (pipeline script in declarative pipeline format). Then, add the repo in the job pipeline in the Jenkins tool. Before this, set up the token of GitHub and add the Jenkins URL in the webhook under repo settings. The token is used like a password while cloning the repo. Use it if it’s a private repo. If it’s a public repo, no token or password is needed.
+GitHub Integration with Jenkins via Webhook: Automate your CI/CD pipeline by integrating GitHub with Jenkins. This eliminates the need for manual building each time there’s a code update in your GitHub repository. 
 
-### Pipeline Execution
+### **Pipeline Execution**
 
-After successfully setting up the basic pipeline, email stage, and webhook, use the Java application with the previous stages. While writing the entire pipeline and executing it, you may face issues like path setup issues and syntax issues. These can be resolved with the help of logs and AI assistance.
+The pipeline initiates by cleaning the workspace and backing up existing files. It then clones the **GitHub** repository into the workspace. Maven is triggered to build, test, and generate a JAR file. The application is then containerized using **Docker**, and the image is scanned for vulnerabilities using **Trivy**. The image is pushed to Docker Hub and deployed into **Kubernetes**. Email notifications are sent via **Gmail** at any stage of failure/Success.
 
-## Common Errors and Solutions
+## **Common Errors and Solutions**
 
 During the execution of the CI/CD pipeline, you may encounter several issues. Here are some common errors and their solutions:
 
@@ -42,6 +44,6 @@ During the execution of the CI/CD pipeline, you may encounter several issues. He
 
 - **Docker Image Tag Error**: If you didn't push an image with the `latest` tag to the Docker registry, and you try to pull from the registry without specifying a tag, Docker will look for the `latest` tag by default. If it doesn't find an image with the `latest` tag, it will return an error. When you push an image to the registry, if you don't specify a tag, Docker will assign the `latest` tag to the image by default. However, if you push the image with a specific tag and don't push an image with the `latest` tag, Docker won't be able to find the `latest` image.
 
-## Conclusion
+## **Conclusion**
 
 This project provides a fundamental understanding of how to implement a CI/CD pipeline on a local Windows 10 system. It covers the basic setup and execution of the pipeline, and also addresses some common issues and their solutions. This project serves as a good starting point for anyone looking to understand and implement CI/CD pipelines in their development workflow.
